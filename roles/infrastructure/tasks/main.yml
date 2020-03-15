@@ -1,0 +1,25 @@
+---
+
+- name: Create/Delete Keypair
+  os_keypair:
+    state: "{{ destroy | ternary('absent', 'present') }}"
+    name: "{{ keypair_name }}"
+    public_key_file: "{{ public_key }}"
+
+
+- name: Create/Delete instance in OpenStack
+  os_server:
+    state: "{{ destroy | ternary('absent', 'present') }}"
+    name: "{{ os_instance_name }}"
+    image: "{{ os_image }}"
+    flavor: "{{ os_flavor }}"
+    network: "{{ network_name }}"
+    key_name: "{{ keypair_name }}"
+
+- name: Machine metada collection
+  os_server_info:
+    server: "{{ os_instance_name }}"
+  register: result
+
+- debug:
+    msg: "{{ result.openstack_servers[0].accessIPv4 }}"

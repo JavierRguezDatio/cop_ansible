@@ -1,0 +1,14 @@
+---
+
+  - hosts: localhost
+    vars:
+      os_instance_name: Javi_Cock
+    become: false
+    connection: local
+    gather_facts: false
+    roles:
+      - infrastructure
+      - nginx
+
+  
+  

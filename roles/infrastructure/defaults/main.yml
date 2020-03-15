@@ -1,0 +1,12 @@
+---
+
+os_flavor: d1.medium
+os_image: RHEL7.5
+os_instance_name: Javier_Instance
+keypair_name: jrodriguez_key
+public_key: /home/jrodriguez/.ssh/id_cop.pub
+network_name: cop_network
+network_id: 40128f87-4009-4599-a0b6-cdf237842c43
+subnet_Name: cop_subnet
+destroy: false
+
